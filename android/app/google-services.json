@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "633874614049",
+    "project_id": "careboxadmin-daffb",
+    "storage_bucket": "careboxadmin-daffb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633874614049:android:b678c1774a7db5df2ba060",
+        "android_client_info": {
+          "package_name": "com.careboxadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "633874614049-spa5n4doit60p7p14qp0q9d1v362oo92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUKPBEm3iyqLcU9DAOcmV72W-VuKGy51s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "633874614049-spa5n4doit60p7p14qp0q9d1v362oo92.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
