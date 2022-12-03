@@ -1,15 +1,17 @@
-import React, {useEffect, useContext, createContext, useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import React, { useEffect, useContext, createContext, useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 
 import OrderListScreen from './src/screens/OrderListScreen';
 import DoctorBookingListScreen from './src/screens/DoctorBookingListScreen';
-
+import PhysioShebaBookingListScreen from './src/screens/PhysioShebaBookingListScreen';
+import AmbulanceBookingListScreen from './src/screens/AmbulanceBookingListScreen';
 import DoctorPresOrderListScreen from './src/screens/DoctorPresOrderListScreen';
 import AssignRiderScreen from './src/screens/AssignRiderScreen';
 import RiderPositionScreen from './src/screens/RiderPositionScreen';
+import UseCoinRequestScreen from './src/screens/UseCoinRequestScreen';
 
 import DashboardScreen from './src/screens/DashboardScreen';
 import ReportUploadScreen from './src/screens/ReportUploadScreen';
@@ -77,8 +79,8 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log(remoteMessage);
-      AsyncStorage.setItem('notificationType',(remoteMessage.data.type));
-      
+      AsyncStorage.setItem('notificationType', (remoteMessage.data.type));
+
       (remoteMessage);
       playSound();
     });
@@ -170,11 +172,38 @@ const App = () => {
               headerShown: false,
             }}
           />
-           <Stack.Screen
+          <Stack.Screen
             name="orderListForRider"
             component={OrderListForRider}
             options={{
               headerShown: false,
+            }}
+          />
+
+          <Stack.Screen
+            name="physioShebaBooking"
+            component={PhysioShebaBookingListScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+
+          <Stack.Screen
+            name="ambulanceBookingList"
+            component={AmbulanceBookingListScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+           <Stack.Screen
+            name="onlinePayment"
+            component={UseCoinRequestScreen}
+            options={{
+              headerShown: true,
+              headerTitle:'All Request',
+              headerTitleStyle:{
+                fontFamily:'Poppins-Regular'
+              }
             }}
           />
           <Stack.Screen name="chooseLocation" component={ChooseLocation} />

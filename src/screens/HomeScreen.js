@@ -10,7 +10,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -116,7 +116,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <>
       <SafeAreaView style={{flex: 1}}>
-        <View style={{flex: 6}}>
+      
           <Modal
             animationType="slide"
             transparent={true}
@@ -233,6 +233,8 @@ const HomeScreen = ({navigation}) => {
             </View>
           </View>
 
+         <View style={{flex:1}}>
+          <ScrollView>
           <View
             style={{
               flexDirection: 'row',
@@ -331,6 +333,52 @@ const HomeScreen = ({navigation}) => {
 
           <View
             style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              marginTop: 30,
+            }}>
+            <Pressable
+              onPress={() => {
+                navigation.navigate('physioShebaBooking');
+                setNotificationType(null);
+              }}
+              style={styles.cardContainer}>
+              {notificationType == 'Pathology' ? (
+                <View style={styles.notificationAlert}></View>
+              ) : null}
+
+              <Image
+                source={require('../assets/physio.jpg')}
+                style={{height: 60, width: 60}}
+              />
+              <Text
+                style={{
+                  color: '#BD0451',
+                  fontSize: 15,
+                  marginTop: 7,
+                  textAlign:'center'
+                }}>{`PhysioSheba Bookings`}</Text>
+            </Pressable>
+
+            <Pressable
+              onPress={() => navigation.navigate('ambulanceBookingList')}
+              style={styles.cardContainer}>
+              <Image
+                source={require('../assets/ambulance.png')}
+                style={{height: 30, width: 50}}
+              />
+              <Text
+                style={{
+                  color: '#BD0451',
+                  fontSize: 15,
+                  marginTop: 7,
+                  textAlign:'center'
+                }}>{`Ambulance Bookings`}</Text>
+            </Pressable>
+          </View>
+
+          <View
+            style={{
               alignItems: 'center',
               marginTop: 30,
             }}>
@@ -349,16 +397,43 @@ const HomeScreen = ({navigation}) => {
                 }}>{`Rider Position`}</Text>
             </Pressable>
           </View>
-        </View>
-        <View
+
+          <View
+            style={{
+              alignItems: 'center',
+              marginTop: 30,
+            }}>
+            <Pressable
+              onPress={()=>navigation.navigate('onlinePayment')}
+              style={[styles.cardContainer, {width: '70%'}]}>
+              <Image
+                source={require('../assets/dollar.png')}
+                style={{height: 60, width: 60}}
+              />
+              <Text
+                style={{
+                  color: '#BD0451',
+                  fontSize: 15,
+                  marginTop: 7,
+                }}>{`Request for use Points`}</Text>
+            </Pressable>
+          </View>
+
+
+          <TouchableOpacity onPress={_logOutPress} style={styles.logOutButton}>
+            <Text style={{fontSize: 14, color: 'white'}}>Log Out</Text>
+          </TouchableOpacity>
+          </ScrollView>
+         </View>
+        
+       
+        {/* <View
           style={{
             flex: 1,
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <TouchableOpacity onPress={_logOutPress} style={styles.logOutButton}>
-            <Text style={{fontSize: 14, color: 'white'}}>Log Out</Text>
-          </TouchableOpacity>
+        
 
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Text
@@ -375,7 +450,7 @@ const HomeScreen = ({navigation}) => {
               style={{height: 50, width: 120}}
             />
           </View>
-        </View>
+        </View> */}
       </SafeAreaView>
     </>
   );
@@ -403,6 +478,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf:'center',
+    marginVertical:20
   },
   cardContainer: {
     height: 150,
